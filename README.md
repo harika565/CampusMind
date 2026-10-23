@@ -36,29 +36,38 @@ c:\CampusMind\
 ## Quick Start
 
 ### 1. Run Development Server
+
 ```bash
 npm run dev
 ```
+
 Access the application in your browser at:
 `http://localhost:5173/`
 
 ### 2. Run Test Suite
+
 ```bash
 npm run test
 ```
+
 Executes all unit and integration test suites.
 
 ### 3. Build for Production
+
 ```bash
 npm run build
 ```
+
 Compiles and generates the production-optimized bundle.
 
 ---
 
 ## Demo Credentials (Mock Mode)
+
 - **Student Account:** `student@university.edu` / `Password123!`
 - **Faculty Account:** `faculty@university.edu` / `Password123!`
 - **Administrator Account:** `admin@university.edu` / `Password123!`
 
 For detailed documentation, refer to [frontend/README.md](file:///c:/CampusMind/frontend/README.md).
+
+# CampusMind
