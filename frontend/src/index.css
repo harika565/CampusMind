@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #2E4F6B;
+    --color-primary-hover: #233E55;
+    --color-bg: #F7F8FA;
+    --color-surface: #FFFFFF;
+    --color-text: #17202A;
+    --color-text-secondary: #667085;
+    --color-border: #E4E7EC;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Custom subtle scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D0D5DD;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #98A2B3;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-campus-primary text-white font-medium text-sm transition-all duration-150 hover:bg-campus-primary-hover focus:outline-none focus:ring-2 focus:ring-campus-primary/30 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed shadow-subtle;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-white border border-campus-border text-campus-text font-medium text-sm transition-all duration-150 hover:bg-campus-surface-subtle hover:border-campus-border-dark focus:outline-none focus:ring-2 focus:ring-campus-primary/20 disabled:opacity-50 disabled:cursor-not-allowed shadow-subtle;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-campus-text-secondary font-medium text-sm transition-colors duration-150 hover:bg-campus-surface-subtle hover:text-campus-text focus:outline-none focus:ring-2 focus:ring-campus-primary/20;
+  }
+
+  .card-surface {
+    @apply bg-white border border-campus-border rounded-xl shadow-subtle;
+  }
+
+  .input-field {
+    @apply w-full px-3.5 py-2.5 bg-white border border-campus-border rounded-lg text-sm text-campus-text placeholder-campus-text-muted transition-colors focus:outline-none focus:border-campus-primary focus:ring-2 focus:ring-campus-primary/10;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "campusmind-workspace",
+  "private": true,
+  "description": "CampusMind — AI-Powered Intelligent Campus Assistant",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "test": "npm --prefix frontend run test",
+    "preview": "npm --prefix frontend run preview"
+  }
+}

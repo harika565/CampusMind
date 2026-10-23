@@ -1,0 +1,358 @@
+import { User, CampusDocument, Conversation, Message, SystemLog, SystemNotification, DashboardMetrics } from '../types';
+
+export const DEMO_USERS: Record<string, { user: User; password: string }> = {
+  student: {
+    user: {
+      id: 'usr_student_01',
+      name: 'Alex Morgan',
+      email: 'student@university.edu',
+      role: 'student',
+      department: 'Computer Science & Engineering',
+      studentId: 'CS-2024-8842',
+      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
+      created_at: '2024-09-01T08:00:00Z',
+    },
+    password: 'Password123!',
+  },
+  faculty: {
+    user: {
+      id: 'usr_faculty_01',
+      name: 'Dr. Evelyn Chen',
+      email: 'faculty@university.edu',
+      role: 'faculty',
+      department: 'School of Computing & Data Science',
+      facultyId: 'FAC-ENG-402',
+      avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200',
+      created_at: '2023-01-15T09:30:00Z',
+    },
+    password: 'Password123!',
+  },
+  admin: {
+    user: {
+      id: 'usr_admin_01',
+      name: 'Marcus Vance',
+      email: 'admin@university.edu',
+      role: 'admin',
+      department: 'Academic Registrar & Information Office',
+      avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
+      created_at: '2022-06-10T10:00:00Z',
+    },
+    password: 'Password123!',
+  },
+};
+
+export const MOCK_DOCUMENTS: CampusDocument[] = [
+  {
+    id: 'doc_01',
+    title: 'University Academic Regulations Handbook (2026-2027)',
+    file_name: 'academic_regulations_2026_27.pdf',
+    file_type: 'PDF',
+    file_size: 4820000,
+    category: 'Regulations',
+    audience: 'all',
+    status: 'indexed',
+    uploaded_at: '2026-08-15T10:00:00Z',
+    indexed_at: '2026-08-15T10:04:12Z',
+    chunks_count: 142,
+  },
+  {
+    id: 'doc_02',
+    title: 'Academic Calendar 2026-2027 (Odd & Even Semesters)',
+    file_name: 'academic_calendar_2026_27.pdf',
+    file_type: 'PDF',
+    file_size: 1250000,
+    category: 'Academic Calendar',
+    audience: 'all',
+    status: 'indexed',
+    uploaded_at: '2026-08-20T14:30:00Z',
+    indexed_at: '2026-08-20T14:31:45Z',
+    chunks_count: 28,
+  },
+  {
+    id: 'doc_03',
+    title: 'Undergraduate Examination Rules & Evaluation Policy',
+    file_name: 'examination_rules_evaluation_policy.pdf',
+    file_type: 'PDF',
+    file_size: 3100000,
+    category: 'Exam Notifications',
+    audience: 'student',
+    status: 'indexed',
+    uploaded_at: '2026-09-02T09:15:00Z',
+    indexed_at: '2026-09-02T09:18:22Z',
+    chunks_count: 84,
+  },
+  {
+    id: 'doc_04',
+    title: 'B.Tech Computer Science Syllabus & Course Modules',
+    file_name: 'cs_curriculum_syllabus_2026.pdf',
+    file_type: 'PDF',
+    file_size: 6450000,
+    category: 'Syllabi',
+    audience: 'all',
+    status: 'indexed',
+    uploaded_at: '2026-09-10T11:20:00Z',
+    indexed_at: '2026-09-10T11:27:03Z',
+    chunks_count: 215,
+  },
+  {
+    id: 'doc_05',
+    title: 'Institutional Tuition Fee Schedule & Payment Deadlines',
+    file_name: 'fee_structure_2026_2027.pdf',
+    file_type: 'PDF',
+    file_size: 1980000,
+    category: 'Fee Structures',
+    audience: 'student',
+    status: 'indexed',
+    uploaded_at: '2026-09-12T16:00:00Z',
+    indexed_at: '2026-09-12T16:02:40Z',
+    chunks_count: 36,
+  },
+  {
+    id: 'doc_06',
+    title: 'Campus Placement & Internship Code of Conduct',
+    file_name: 'placement_internship_handbook.pdf',
+    file_type: 'PDF',
+    file_size: 2750000,
+    category: 'Placement Guidelines',
+    audience: 'student',
+    status: 'indexed',
+    uploaded_at: '2026-09-25T13:45:00Z',
+    indexed_at: '2026-09-25T13:48:10Z',
+    chunks_count: 62,
+  },
+  {
+    id: 'doc_07',
+    title: 'Faculty Research Grant Applications & Sabbatical Rules',
+    file_name: 'faculty_research_guidelines_2026.docx',
+    file_type: 'DOCX',
+    file_size: 3840000,
+    category: 'Campus Policies',
+    audience: 'faculty',
+    status: 'processing',
+    uploaded_at: '2026-10-22T08:30:00Z',
+    indexed_at: null,
+    chunks_count: 0,
+  },
+  {
+    id: 'doc_08',
+    title: 'University Residence & Hostel Accommodation Policy 2026',
+    file_name: 'hostel_regulations_2026.pdf',
+    file_type: 'PDF',
+    file_size: 1420000,
+    category: 'Campus Policies',
+    audience: 'student',
+    status: 'indexed',
+    uploaded_at: '2026-10-01T15:00:00Z',
+    indexed_at: '2026-10-01T15:01:55Z',
+    chunks_count: 40,
+  },
+  {
+    id: 'doc_09',
+    title: 'Fall 2026 Comprehensive Class Timetable',
+    file_name: 'fall_timetable_master_v3.pdf',
+    file_type: 'PDF',
+    file_size: 5120000,
+    category: 'Timetables',
+    audience: 'all',
+    status: 'pending',
+    uploaded_at: '2026-10-23T11:00:00Z',
+    indexed_at: null,
+    chunks_count: 0,
+  },
+  {
+    id: 'doc_10',
+    title: 'Campus Laboratory Safety Procedures (Archive)',
+    file_name: 'lab_safety_procedures_v1.pdf',
+    file_type: 'PDF',
+    file_size: 890000,
+    category: 'Regulations',
+    audience: 'all',
+    status: 'failed',
+    uploaded_at: '2026-10-18T10:00:00Z',
+    indexed_at: null,
+    error_message: 'Corrupted font encoding: unable to extract text stream from vector layer.',
+    chunks_count: 0,
+  },
+];
+
+export const MOCK_CONVERSATIONS: Conversation[] = [
+  {
+    id: 'conv_01',
+    title: 'Attendance Regulations & Condonation Rules',
+    created_at: '2026-10-20T14:22:00Z',
+    updated_at: '2026-10-20T14:25:30Z',
+    message_count: 4,
+    last_message: 'The minimum required attendance is 75% across all enrolled theory and laboratory courses.',
+  },
+  {
+    id: 'conv_02',
+    title: 'End-Semester Exam Schedule and Revaluation',
+    created_at: '2026-10-18T09:12:00Z',
+    updated_at: '2026-10-18T09:15:10Z',
+    message_count: 2,
+    last_message: 'End-semester examinations for Fall 2026 begin on December 3, 2026.',
+  },
+  {
+    id: 'conv_03',
+    title: 'Placement Eligibility Criteria for Day 1 Companies',
+    created_at: '2026-10-15T16:40:00Z',
+    updated_at: '2026-10-15T16:44:00Z',
+    message_count: 2,
+    last_message: 'Students must maintain a CGPA of 7.5 or above with no active backlogs.',
+  },
+  {
+    id: 'conv_04',
+    title: 'Fee Payment Installments & Late Fine Waivers',
+    created_at: '2026-10-10T11:05:00Z',
+    updated_at: '2026-10-10T11:08:45Z',
+    message_count: 2,
+    last_message: 'Semester fees can be paid in up to two equal installments upon Dean approval.',
+  },
+];
+
+export const MOCK_MESSAGES_MAP: Record<string, Message[]> = {
+  conv_01: [
+    {
+      id: 'msg_01_user',
+      role: 'user',
+      content: 'What is the minimum attendance requirement to be eligible for end-semester examinations?',
+      created_at: '2026-10-20T14:22:00Z',
+    },
+    {
+      id: 'msg_01_assistant',
+      role: 'assistant',
+      content: `According to the official **University Academic Regulations Handbook (2026-2027)**:
+
+1. **Mandatory Threshold:** Every student must secure a minimum of **75% attendance** in each registered theory and laboratory course.
+2. **Medical Condonation:** A relaxation down to **65%** may be granted on medical grounds or official institutional representation (sports, conferences), provided:
+   - Valid supporting certificates are submitted to the Head of Department within **7 working days** of returning.
+   - Prescribed condonation fees are remitted before the deadline.
+3. **Disqualification (Debarment):** Students falling below 65% under any circumstances are declared debarred and must repeat the course in a subsequent semester.`,
+      created_at: '2026-10-20T14:22:15Z',
+      citations: [
+        {
+          id: 'cit_01',
+          document_id: 'doc_01',
+          document_title: 'University Academic Regulations Handbook (2026-2027)',
+          page_number: 14,
+          section_name: 'Section 4.2: Attendance Requirements and Debarment',
+          excerpt: 'A candidate shall be eligible to appear for the end-semester examinations if they have acquired a minimum of 75% attendance in theory and laboratory courses independently. Condonation up to 10% is permissible on medical grounds...',
+          relevance_score: 0.94,
+        },
+        {
+          id: 'cit_02',
+          document_id: 'doc_03',
+          document_title: 'Undergraduate Examination Rules & Evaluation Policy',
+          page_number: 6,
+          section_name: 'Rule 3.1: Examination Eligibility Verification',
+          excerpt: 'The Office of the Controller of Examinations receives the final debarment list 48 hours prior to the issuance of hall tickets.',
+          relevance_score: 0.88,
+        },
+      ],
+    },
+    {
+      id: 'msg_02_user',
+      role: 'user',
+      content: 'How do I apply for attendance condonation on medical grounds?',
+      created_at: '2026-10-20T14:24:30Z',
+    },
+    {
+      id: 'msg_02_assistant',
+      role: 'assistant',
+      content: `To apply for medical condonation:
+
+1. Obtain a medical certificate from a registered medical practitioner endorsed by the **Campus Health Center**.
+2. Submit the physical application form along with medical reports to your **Head of Department (HOD)** within 7 days of resuming classes.
+3. The departmental committee verifies the claim and forwards it to the **Dean of Academic Affairs** for final endorsement.`,
+      created_at: '2026-10-20T14:25:30Z',
+      citations: [
+        {
+          id: 'cit_03',
+          document_id: 'doc_01',
+          document_title: 'University Academic Regulations Handbook (2026-2027)',
+          page_number: 15,
+          section_name: 'Section 4.3: Procedure for Attendance Condonation',
+          excerpt: 'All medical claims must be authenticated by the Chief Medical Officer at the University Health Centre prior to submission to the Departmental Academic Council.',
+          relevance_score: 0.92,
+        },
+      ],
+    },
+  ],
+};
+
+export const MOCK_NOTIFICATIONS: SystemNotification[] = [
+  {
+    id: 'notif_01',
+    title: 'End-Semester Exam Schedule Published',
+    message: 'The final timetable for Fall 2026 theory and lab examinations is now indexed.',
+    type: 'info',
+    created_at: '2026-10-22T09:00:00Z',
+    read: false,
+    link: '/app/chat',
+  },
+  {
+    id: 'notif_02',
+    title: 'Document Processing Completed',
+    message: 'Academic Calendar 2026-2027 has been successfully processed and indexed into the RAG vector store.',
+    type: 'success',
+    created_at: '2026-10-21T16:30:00Z',
+    read: false,
+  },
+  {
+    id: 'notif_03',
+    title: 'Tuition Fee Due Date Notice',
+    message: 'Second installment deadline for semester fee payment is November 15, 2026.',
+    type: 'warning',
+    created_at: '2026-10-19T11:00:00Z',
+    read: true,
+  },
+];
+
+export const MOCK_SYSTEM_LOGS: SystemLog[] = [
+  {
+    id: 'log_01',
+    timestamp: '2026-10-23T18:15:22Z',
+    level: 'INFO',
+    service: 'rag-indexer',
+    message: 'Vector embedding generation completed for document doc_06 (62 chunks, dim=1536).',
+  },
+  {
+    id: 'log_02',
+    timestamp: '2026-10-23T17:42:01Z',
+    level: 'INFO',
+    service: 'query-router',
+    message: 'Semantic query dispatched to Qdrant vector index. Latency: 114ms, similarity cutoff: 0.78.',
+  },
+  {
+    id: 'log_03',
+    timestamp: '2026-10-23T16:20:15Z',
+    level: 'WARN',
+    service: 'auth-service',
+    message: 'Multiple failed login attempts detected from IP 192.168.1.104. Rate-limit enforced.',
+  },
+  {
+    id: 'log_04',
+    timestamp: '2026-10-23T15:05:40Z',
+    level: 'ERROR',
+    service: 'document-processor',
+    message: 'Failed to parse doc_10 (lab_safety_procedures_v1.pdf): Corrupted font encoding table in PDF trailer.',
+  },
+  {
+    id: 'log_05',
+    timestamp: '2026-10-23T14:10:00Z',
+    level: 'INFO',
+    service: 'audit-log',
+    message: 'Admin Marcus Vance uploaded document "Fall 2026 Comprehensive Class Timetable" (doc_09).',
+  },
+];
+
+export const MOCK_DASHBOARD_METRICS: DashboardMetrics = {
+  total_documents: 10,
+  indexed_documents: 7,
+  processing_documents: 2,
+  failed_documents: 1,
+  total_conversations: 1240,
+  total_queries_served: 4890,
+  system_health: 'healthy',
+  recent_uploads: MOCK_DOCUMENTS.slice(0, 5),
+};
